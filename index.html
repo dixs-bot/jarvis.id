@@ -1,168 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jarvis.id | Jasa Service HP Online</title>
-  <style>
-    :root {
-      --primary: #0a2540;
-      --secondary: #00d4ff;
-      --text: #1f2933;
-      --bg: #f8fafc;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
+<title>jarvis.id | Jasa Service HP Cimahi – Flash, Smali & Oprek Ojol</title>
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-    }
+<!-- SEO META -->
+<meta name="description" content="jarvis.id adalah jasa service HP Cimahi spesialis software Android. Melayani flash HP, smali patcher, module smali, oprek HP ojol (Grab, Gojek), unlock & custom ROM. Jemput HP dari rumah.">
+<meta name="keywords" content="jasa service hp cimahi, flash hp cimahi, smali patcher cimahi, module smali cimahi, oprek hp ojol cimahi, service ojol cimahi, service android cimahi">
+<meta name="author" content="jarvis.id">
+<meta name="robots" content="index, follow">
 
-    header {
-      background: linear-gradient(135deg, var(--primary), #020617);
-      color: white;
-      padding: 70px 20px;
-      text-align: center;
-    }
+<!-- Open Graph -->
+<meta property="og:title" content="jarvis.id | Jasa Service HP Cimahi">
+<meta property="og:description" content="Service HP Cimahi spesialis software Android, smali patcher & oprek HP ojol. Jemput HP dari rumah.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAAD///////////////////////////////////////////////////////////////8AAAD///8AAAB3d3f09PTT09Pz8/Pg4OCmpqaOjo6enp6qqqqZmZmpqamNjY2Li4uSkpKioqKxsbGUlJSFhYW/v7+AgICwsLArKyuEhIR0dHQZGRmZmZmLi4tLS0tJSUlHR0d5eXk+Pj7IyMi0tLRbW1uHh4c4ODh1dXVOTk5sbGxzc3NPT09mZmZFRUVBQUEjIyNwcHB/f3+ioqKSkpKcnJyVlZWYmJiOjo6BgYFZWVk0NDRubm5vb29paWkAAAB6c5xkAAAALHRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCorLC0uLzAxMjM0NTY3ODk6Ozw9Pk8n2wAAAJlJREFUGNNVzUcSgCAMBdC0I7u7u/9vZ5GZQk0+1xEwYkJY7sIhRGiGEMFZq1o2F4PAv3L7Qm4wZlK0cH6JQOq8eC1ZQ6zR9M4xkH8i6Qv0Cw8N0X0r2C5P0j0l2Z9A7l9w9uA3b1wKpR7k8C8lZz5AAAAAElFTkSuQmCC">
 
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      max-width: 700px;
-      margin: auto;
-    }
+<style>
+:root{--primary:#0a2540;--accent:#00d4ff;--bg:#f8fafc;}
+*{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{margin:0;background:var(--bg);color:#1f2933}
+header{background:linear-gradient(135deg,#0a2540,#020617);color:white;padding:70px 20px;text-align:center}
+header h1{font-size:2.8rem} header span{color:var(--accent)}
+.btn{display:inline-block;margin-top:25px;padding:14px 30px;border-radius:50px;background:var(--accent);color:#002233;font-weight:700;text-decoration:none}
+section{max-width:1100px;margin:auto;padding:60px 20px}
+h2{text-align:center;margin-bottom:30px}
 
-    .btn-wa {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 14px 30px;
-      background: var(--secondary);
-      color: #002233;
-      font-weight: bold;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:white;padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.card h3{color:var(--primary)}
 
-    .btn-wa:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,212,255,0.4);
-    }
+.brand{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:20px}
+.brand div{background:white;padding:18px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.06);font-weight:700;text-align:center}
 
-    section {
-      padding: 70px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+form{background:white;padding:30px;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,.08);max-width:600px;margin:auto}
+input,select,textarea,button{width:100%;padding:14px;margin-top:12px;border-radius:10px;border:1px solid #cbd5e1}
+button{background:var(--primary);color:white;border:none;font-weight:700;cursor:pointer}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
+.step{background:white;margin:12px auto;padding:15px;border-radius:12px;max-width:400px;box-shadow:0 8px 20px rgba(0,0,0,.08);opacity:.4}
+.step.active{opacity:1;border-left:6px solid var(--accent);font-weight:700}
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-
-    .highlight {
-      background: var(--primary);
-      color: white;
-      border-radius: 20px;
-      padding: 50px 30px;
-      text-align: center;
-    }
-
-    footer {
-      background: #020617;
-      color: #cbd5e1;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 0.9rem;
-    }
-
-    footer span {
-      color: var(--secondary);
-      font-weight: bold;
-    }
-  </style>
+footer{background:#020617;color:#94a3b8;text-align:center;padding:30px}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>jarvis.id</h1>
-  <p>Jasa Service HP Online – Spesialis Software Android & iPhone  
-     Jemput HP dari rumah, tanpa ribet ke konter.</p>
-
-  <a class="btn-wa" href="https://wa.me/628XXXXXXXXXX" target="_blank">
-    Chat WhatsApp Sekarang
-  </a>
+<h1><span>jarvis</span>.id</h1>
+<p>Jasa Service HP Online <b>Cimahi</b> – Flash, Smali & Oprek Ojol</p>
+<a class="btn" href="#order">Order Sekarang</a>
 </header>
 
 <section>
-  <h2 style="text-align:center; margin-bottom:40px;">Layanan Kami</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Flash HP</h3>
-      <p>Mengatasi bootloop, mati total, error sistem, upgrade/downgrade firmware.</p>
-    </div>
-    <div class="card">
-      <h3>Unlock & Bypass</h3>
-      <p>FRP Google, Mi Cloud, akun terkunci (sesuai ketentuan).</p>
-    </div>
-    <div class="card">
-      <h3>Oprek Android</h3>
-      <p>Root, custom ROM, optimasi performa & baterai.</p>
-    </div>
-    <div class="card">
-      <h3>Service Online</h3>
-      <p>HP dijemput dari rumah, aman & praktis tanpa ke konter.</p>
-    </div>
-  </div>
+<h2>Layanan Unggulan</h2>
+<div class="grid">
+<div class="card">
+<h3>Flash & Repair Software</h3>
+<p>Bootloop, mati total, upgrade/downgrade firmware Android & iPhone.</p>
+</div>
+<div class="card">
+<h3>Smali Patcher</h3>
+<p>Pembuatan module smali, patch signature, mock location, dan custom kebutuhan aplikasi tertentu.</p>
+</div>
+<div class="card">
+<h3>Oprek HP Ojol</h3>
+<p>Optimasi HP driver ojol (Grab, Gojek, ShopeeFood) sesuai kebutuhan dan perangkat.</p>
+</div>
+<div class="card">
+<h3>Custom ROM & Root</h3>
+<p>Root Magisk, custom ROM, optimasi performa & baterai.</p>
+</div>
+</div>
 </section>
 
-<section class="highlight">
-  <h2>Kenapa Pilih jarvis.id?</h2>
-  <p style="margin-top:15px;">
-    ✔ Teknisi Berpengalaman  
-    ✔ Aman & Profesional  
-    ✔ Proses Transparan  
-    ✔ Support WhatsApp
-  </p>
+<section>
+<h2>Support Brand HP</h2>
+<div class="brand">
+<div>Samsung</div><div>Xiaomi</div><div>Oppo</div><div>Vivo</div>
+<div>Realme</div><div>Infinix</div><div>Huawei</div><div>iPhone</div>
+</div>
+</section>
 
-  <a class="btn-wa" href="https://wa.me/628XXXXXXXXXX" target="_blank">
-    Konsultasi Gratis
-  </a>
+<section id="order">
+<h2>Form Service & Penjemputan</h2>
+<form onsubmit="sendWA();return false;">
+<input id="nama" placeholder="Nama Lengkap" required>
+<select id="brand">
+<option>Samsung</option><option>Xiaomi</option><option>Oppo</option>
+<option>Vivo</option><option>Realme</option><option>iPhone</option>
+</select>
+<textarea id="kendala" placeholder="Kendala / Kebutuhan (flash, smali, ojol, dll)"></textarea>
+<textarea id="alamat" placeholder="Alamat Penjemputan"></textarea>
+<input id="lokasi" placeholder="Lokasi Otomatis (GPS)" readonly>
+<input id="ongkir" placeholder="Estimasi Ongkir" readonly>
+<button type="button" onclick="getLocation()">Deteksi Lokasi</button>
+<button type="submit">Kirim ke WhatsApp</button>
+</form>
+</section>
+
+<section>
+<h2>Lokasi Konter Resmi jarvis.id</h2>
+<iframe src="https://www.google.com/maps?q=-6.872100,107.542200&z=16&output=embed"
+width="100%" height="380" style="border:0;border-radius:20px"></iframe>
+</section>
+
+<section>
+<h2>Status Perbaikan HP</h2>
+<div style="max-width:400px;margin:auto">
+<input id="kode" placeholder="Kode Service (JRV1001)">
+<button onclick="cekStatus()">Cek Status</button>
+</div>
+<div id="hasil" style="display:none;margin-top:30px">
+<div class="step">📦 HP Diterima</div>
+<div class="step">⚙️ Proses Pengerjaan</div>
+<div class="step">✅ Selesai Diperbaiki</div>
+<div class="step">🚚 Siap Dikirim</div>
+</div>
+</section>
+
+<section>
+<h2>Jasa Service HP Cimahi Terpercaya</h2>
+<p><b>jarvis.id</b> melayani jasa service HP Cimahi khusus software Android seperti flash HP, smali patcher, module smali, dan oprek HP ojol.</p>
+<p>Layanan mencakup Cimahi Utara, Cimahi Tengah, dan Cimahi Selatan dengan sistem jemput HP ke rumah.</p>
 </section>
 
 <footer>
-  © 2026 <span>jarvis.id</span> — Jasa Service HP Online Profesional
+<p>© 2026 <b>jarvis.id</b> – Jasa Service HP Cimahi</p>
+<p>Flash HP Cimahi | Smali Patcher Cimahi | Oprek HP Ojol Cimahi</p>
 </footer>
+
+<script>
+function getLocation(){
+navigator.geolocation.getCurrentPosition(pos=>{
+lokasi.value=pos.coords.latitude.toFixed(5)+", "+pos.coords.longitude.toFixed(5);
+ongkir.value="Rp 15.000 – 30.000 (estimasi)";
+});
+}
+function sendWA(){
+let text=`Halo jarvis.id%0A
+Nama: ${nama.value}%0A
+Brand: ${brand.value}%0A
+Kebutuhan: ${kendala.value}%0A
+Alamat: ${alamat.value}%0A
+Lokasi: ${lokasi.value}%0A
+Ongkir: ${ongkir.value}`;
+window.open("https://wa.me/628XXXXXXXXXX?text="+text);
+}
+function cekStatus(){
+let kode=document.getElementById("kode").value.toUpperCase();
+let steps=document.querySelectorAll(".step");
+steps.forEach(s=>s.classList.remove("active"));
+hasil.style.display="block";
+let status=1;
+if(kode==="JRV1002") status=2;
+if(kode==="JRV1003") status=3;
+if(kode==="JRV1004") status=4;
+for(let i=0;i<status;i++) steps[i].classList.add("active");
+}
+</script>
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"LocalBusiness",
+"name":"jarvis.id Jasa Service HP Cimahi",
+"address":{"addressLocality":"Cimahi","addressRegion":"Jawa Barat","addressCountry":"ID"},
+"areaServed":"Cimahi",
+"description":"Jasa service HP Cimahi spesialis flash HP, smali patcher, module smali, dan oprek HP ojol.",
+"url":"https://jarvis.id"
+}
+</script>
 
 </body>
 </html>
