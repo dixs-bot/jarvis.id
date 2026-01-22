@@ -1,213 +1,758 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>jarvis.id | Jasa Service HP Cimahi – Flash, Smali & Oprek Ojol</title>
+    
+    <!-- SEO META -->
+    <meta name="description" content="jarvis.id adalah jasa service HP Cimahi spesialis software Android. Melayani flash HP, smali patcher, module smali, oprek HP ojol (Grab, Gojek), unlock & custom ROM. Jemput HP dari rumah.">
+    <meta name="keywords" content="jasa service hp cimahi, flash hp cimahi, smali patcher cimahi, module smali cimahi, oprek hp ojol cimahi, service ojol cimahi, service android cimahi">
+    <meta name="author" content="jarvis.id">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="jarvis.id | Jasa Service HP Cimahi">
+    <meta property="og:description" content="Service HP Cimahi spesialis software Android, smali patcher & oprek HP ojol. Jemput HP dari rumah.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAAD///////////////////////////////////////////////////////////////8AAAD///8AAAB3d3f09PTT09Pz8/Pg4OCmpqaOjo6enp6qqqqZmZmpqamNjY2Li4uSkpKioqKxsbGUlJSFhYW/v7+AgICwsLArKyuEhIR0dHQZGRmZmZmLi4tLS0tJSUlHR0d5eXk+Pj7IyMi0tLRbW1uHh4c4ODh1dXVOTk5sbGxzc3NPT09mZmZFRUVBQUEjIyNwcHB/f3+ioqKSkpKcnJyVlZWYmJiOjo6BgYFZWVk0NDRubm5vb29paWkAAAB6c5xkAAAALHRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCorLC0uLzAxMjM0NTY3ODk6Ozw9Pk8n2wAAAJlJREFUGNNVzUcSgCAMBdC0I7u7u/9vZ5GZQk0+1xEwYkJY7sIhRGiGEMFZq1o2F4PAv3L7Qm4wZlK0cH6JQOq8eC1ZQ6zR9M4xkH8i6Qv0Cw8N0X0r2C5P0j0l2Z9A7l9w9uA3b1wKpR7k8C8lZz5AAAAAElFTkSuQmCC">
 
-<title>jarvis.id | Jasa Service HP Cimahi – Flash, Smali & Oprek Ojol</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #0f172a; /* Dark Navy */
+            --primary-light: #1e293b;
+            --accent: #06b6d4; /* Electric Cyan */
+            --accent-hover: #0891b2;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-body: #f1f5f9;
+            --white: #ffffff;
+            --radius: 12px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
 
-<!-- SEO META -->
-<meta name="description" content="jarvis.id adalah jasa service HP Cimahi spesialis software Android. Melayani flash HP, smali patcher, module smali, oprek HP ojol (Grab, Gojek), unlock & custom ROM. Jemput HP dari rumah.">
-<meta name="keywords" content="jasa service hp cimahi, flash hp cimahi, smali patcher cimahi, module smali cimahi, oprek hp ojol cimahi, service ojol cimahi, service android cimahi">
-<meta name="author" content="jarvis.id">
-<meta name="robots" content="index, follow">
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-<!-- Open Graph -->
-<meta property="og:title" content="jarvis.id | Jasa Service HP Cimahi">
-<meta property="og:description" content="Service HP Cimahi spesialis software Android, smali patcher & oprek HP ojol. Jemput HP dari rumah.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="id_ID">
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAAD///////////////////////////////////////////////////////////////8AAAD///8AAAB3d3f09PTT09Pz8/Pg4OCmpqaOjo6enp6qqqqZmZmpqamNjY2Li4uSkpKioqKxsbGUlJSFhYW/v7+AgICwsLArKyuEhIR0dHQZGRmZmZmLi4tLS0tJSUlHR0d5eXk+Pj7IyMi0tLRbW1uHh4c4ODh1dXVOTk5sbGxzc3NPT09mZmZFRUVBQUEjIyNwcHB/f3+ioqKSkpKcnJyVlZWYmJiOjo6BgYFZWVk0NDRubm5vb29paWkAAAB6c5xkAAAALHRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCorLC0uLzAxMjM0NTY3ODk6Ozw9Pk8n2wAAAJlJREFUGNNVzUcSgCAMBdC0I7u7u/9vZ5GZQk0+1xEwYkJY7sIhRGiGEMFZq1o2F4PAv3L7Qm4wZlK0cH6JQOq8eC1ZQ6zR9M4xkH8i6Qv0Cw8N0X0r2C5P0j0l2Z9A7l9w9uA3b1wKpR7k8C8lZz5AAAAAElFTkSuQmCC">
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-<style>
-:root{--primary:#0a2540;--accent:#00d4ff;--bg:#f8fafc;}
-*{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{margin:0;background:var(--bg);color:#1f2933}
-header{background:linear-gradient(135deg,#0a2540,#020617);color:white;padding:70px 20px;text-align:center}
-header h1{font-size:2.8rem} header span{color:var(--accent)}
-.btn{display:inline-block;margin-top:25px;padding:14px 30px;border-radius:50px;background:var(--accent);color:#002233;font-weight:700;text-decoration:none}
-section{max-width:1100px;margin:auto;padding:60px 20px}
-h2{text-align:center;margin-bottom:30px}
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card{background:white;padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.card h3{color:var(--primary)}
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.39);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.23);
+        }
 
-.brand{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:20px}
-.brand div{background:white;padding:18px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.06);font-weight:700;text-align:center}
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
 
-form{background:white;padding:30px;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,.08);max-width:600px;margin:auto}
-input,select,textarea,button{width:100%;padding:14px;margin-top:12px;border-radius:10px;border:1px solid #cbd5e1}
-button{background:var(--primary);color:white;border:none;font-weight:700;cursor:pointer}
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
 
-.step{background:white;margin:12px auto;padding:15px;border-radius:12px;max-width:400px;box-shadow:0 8px 20px rgba(0,0,0,.08);opacity:.4}
-.step.active{opacity:1;border-left:6px solid var(--accent);font-weight:700}
+        /* --- HEADER & NAV --- */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #020617 100%);
+            color: var(--white);
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-footer{background:#020617;color:#94a3b8;text-align:center;padding:30px}
-</style>
+        /* Background Pattern */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 30%);
+            z-index: 0;
+        }
+
+        .header-content { position: relative; z-index: 1; }
+        
+        .brand-logo-text {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+        
+        .brand-logo-text span { color: var(--accent); }
+        
+        .hero-desc {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo { font-weight: 800; font-size: 1.5rem; color: white; }
+        .nav-logo span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { color: #cbd5e1; font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Mobile Menu */
+        .mobile-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- SECTIONS --- */
+        section { padding: 80px 0; }
+
+        /* Services */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .card-icon {
+            width: 60px; height: 60px;
+            background: #ecfeff;
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon svg { width: 32px; height: 32px; }
+
+        .card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Brands */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .brand-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border: 1px solid #f1f5f9;
+        }
+
+        .brand-item span { margin-top: 10px; }
+
+        /* Order Form */
+        .order-wrapper {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .order-info {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .order-info h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .order-info p { color: #94a3b8; margin-bottom: 30px; }
+        .feature-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .feature-list svg { color: var(--accent); }
+
+        .order-form { padding: 40px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+
+        .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2); }
+        .form-control[readonly] { background-color: #f1f5f9; color: var(--text-light); cursor: not-allowed; }
+
+        .btn-block { width: 100%; margin-top: 10px; }
+
+        /* Status Tracker */
+        .status-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .tracker {
+            display: none; /* Hidden by default */
+            margin-top: 30px;
+            text-align: left;
+            position: relative;
+        }
+
+        .tracker-step {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 25px;
+            color: #cbd5e1;
+            transition: 0.4s;
+        }
+
+        .tracker-step::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 5px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            z-index: 2;
+            transition: 0.4s;
+        }
+
+        .tracker-step::after {
+            content: '';
+            position: absolute;
+            left: 5px; top: 18px;
+            bottom: -20px;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+
+        .tracker-step:last-child::after { display: none; }
+
+        .tracker-step.active { color: var(--primary); font-weight: 600; }
+        .tracker-step.active::before { background: var(--accent); box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2); }
+        
+        /* Map */
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 400px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        footer p { margin-bottom: 10px; }
+        footer strong { color: var(--white); }
+
+        /* --- TOAST NOTIFICATION --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .brand-logo-text { font-size: 2.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: block; }
+            
+            .order-wrapper { grid-template-columns: 1fr; }
+            .order-info { padding: 30px; text-align: center; }
+            .feature-list { display: inline-block; text-align: left; }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-<h1><span>jarvis</span>.id</h1>
-<p>Jasa Service HP Online <b>Cimahi</b> – Flash, Smali & Oprek Ojol</p>
-<a class="btn" href="#order">Order Sekarang</a>
-</header>
+    <!-- Navigasi -->
+    <nav>
+        <div class="container nav-container">
+            <div class="nav-logo"><span>jarvis</span>.id</div>
+            <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#brands">Brand</a></li>
+                <li><a href="#order">Order Service</a></li>
+                <li><a href="#status">Status</a></li>
+                <li><a href="#location">Lokasi</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<section>
-<h2>Layanan Unggulan</h2>
-<div class="grid">
-<div class="card">
-<h3>Flash & Repair Software</h3>
-<p>Bootloop, mati total, upgrade/downgrade firmware Android & iPhone.</p>
-</div>
-<div class="card">
-<h3>Smali Patcher</h3>
-<p>Pembuatan module smali, patch signature, mock location, dan custom kebutuhan aplikasi tertentu.</p>
-</div>
-<div class="card">
-<h3>Oprek HP Ojol</h3>
-<p>Optimasi HP driver ojol (Grab, Gojek, ShopeeFood) sesuai kebutuhan dan perangkat.</p>
-</div>
-<div class="card">
-<h3>Custom ROM & Root</h3>
-<p>Root Magisk, custom ROM, optimasi performa & baterai.</p>
-</div>
-</div>
-</section>
+    <!-- Header / Hero Section -->
+    <header>
+        <div class="container header-content">
+            <h1 class="brand-logo-text">Solusi HP <span id="typing">Android</span></h1>
+            <p class="hero-desc">Jasa Service HP Online <strong>Cimahi</strong>. Spesialis Flash, Smali Patcher, dan Oprek HP Ojol. Kami jemput, kami kerjakan.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#order" class="btn btn-primary">Order Sekarang</a>
+                <a href="https://wa.me/6281234567890" class="btn btn-outline">Chat WhatsApp</a>
+            </div>
+        </div>
+    </header>
 
-<section>
-  <h2>Support Brand HP</h2>
+    <!-- Layanan Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Layanan Unggulan</h2>
+            <p class="section-subtitle">Solusi software terbaik untuk perangkat Anda, ditangani oleh teknisi berpengalaman.</p>
+            
+            <div class="grid-cards">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Icon: Chip/Tools -->
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+                    </div>
+                    <h3>Flash & Repair Software</h3>
+                    <p>Atasi bootloop, hang logo, mati total, hingga upgrade atau downgrade firmware Android & iPhone dengan aman.</p>
+                </div>
 
-  <div class="brand brand-logo">
-    <div>
-      <img src="samsung.png" alt="Samsung">
-      <span>Samsung</span>
-    </div>
-    <div>
-      <img src="xiomi.png" alt="Xiaomi">
-      <span>Xiaomi</span>
-    </div>
-    <div>
-      <img src="oppo.png" alt="Oppo">
-      <span>Oppo</span>
-    </div>
-    <div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vivo_Logo_2019.svg" alt="Vivo">
-      <span>Vivo</span>
-    </div>
-    <div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Realme_logo.svg" alt="Realme">
-      <span>Realme</span>
-    </div>
-    <div>
-      <img src="" alt="Infinix">
-      <span>Infinix</span>
-    </div>
-    <div>
-      <img src="" alt="Huawei">
-      <span>Huawei</span>
-    </div>
-    <div>
-      <img src="" alt="iPhone">
-      <span>iPhone</span>
-    </div>
-  </div>
-</section>
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Icon: Code/Terminal -->
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                    </div>
+                    <h3>Smali Patcher</h3>
+                    <p>Pembuatan module smali, patch signature, mock location, bypass security, dan custom kebutuhan aplikasi spesifik.</p>
+                </div>
 
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Icon: Map/Bike -->
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                    </div>
+                    <h3>Oprek HP Ojol</h3>
+                    <p>Optimasi khusus driver Ojol (Grab, Gojek, ShopeeFood). Maximalkan performa dan baterai untuk penghasilan maksimal.</p>
+                </div>
 
-<section id="order">
-<h2>Form Service & Penjemputan</h2>
-<form onsubmit="sendWA();return false;">
-<input id="nama" placeholder="Nama Lengkap" required>
-<select id="brand">
-<option>Samsung</option><option>Xiaomi</option><option>Oppo</option>
-<option>Vivo</option><option>Realme</option><option>iPhone</option>
-</select>
-<textarea id="kendala" placeholder="Kendala / Kebutuhan (flash, smali, ojol, dll)"></textarea>
-<textarea id="alamat" placeholder="Alamat Penjemputan"></textarea>
-<input id="lokasi" placeholder="Lokasi Otomatis (GPS)" readonly>
-<input id="ongkir" placeholder="Estimasi Ongkir" readonly>
-<button type="button" onclick="getLocation()">Deteksi Lokasi</button>
-<button type="submit">Kirim ke WhatsApp</button>
-</form>
-</section>
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Icon: Cog/Settings -->
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+                    </div>
+                    <h3>Custom ROM & Root</h3>
+                    <p>Instalasi Magisk Root, Custom ROM (MIUI, AOSP, Pixel Experience), debloat, dan optimasi performa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-<h2>Lokasi Konter Resmi jarvis.id</h2>
-<iframe src="https://www.google.com/maps?q=-6.872100,107.542200&z=16&output=embed"
-width="100%" height="380" style="border:0;border-radius:20px"></iframe>
-</section>
+    <!-- Support Brand -->
+    <section id="brands" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">Support Brand HP</h2>
+            <div class="brand-grid" style="margin-top: 40px;">
+                <!-- Using placeholder text/boxes for logos to ensure they look good if images fail -->
+                <div class="brand-item"><span>Samsung</span></div>
+                <div class="brand-item"><span>Xiaomi</span></div>
+                <div class="brand-item"><span>Oppo</span></div>
+                <div class="brand-item"><span>Vivo</span></div>
+                <div class="brand-item"><span>Realme</span></div>
+                <div class="brand-item"><span>Infinix</span></div>
+                <div class="brand-item"><span>iPhone</span></div>
+                <div class="brand-item"><span>Asus</span></div>
+            </div>
+        </div>
+    </section>
 
-<section>
-<h2>Status Perbaikan HP</h2>
-<div style="max-width:400px;margin:auto">
-<input id="kode" placeholder="Kode Service (JRV1001)">
-<button onclick="cekStatus()">Cek Status</button>
-</div>
-<div id="hasil" style="display:none;margin-top:30px">
-<div class="step">📦 HP Diterima</div>
-<div class="step">⚙️ Proses Pengerjaan</div>
-<div class="step">✅ Selesai Diperbaiki</div>
-<div class="step">🚚 Siap Dikirim</div>
-</div>
-</section>
+    <!-- Order Section -->
+    <section id="order">
+        <div class="container">
+            <div class="order-wrapper">
+                <div class="order-info">
+                    <h3>Siap Membantu HP Anda</h3>
+                    <p>Isi formulir di samping untuk menjadwalkan penjemputan atau konsultasi gratis via WhatsApp.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Jemput ke Rumah (Cimahi Area)
+                        </li>
+                        <li>
+                            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Garansi Service
+                        </li>
+                        <li>
+                            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Pembayaran Pas Selesai
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="order-form">
+                    <form onsubmit="sendWA(); return false;">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="nama" class="form-control" placeholder="Contoh: Budi Santoso" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Merk & Tipe HP</label>
+                            <select id="brand" class="form-control">
+                                <option>Samsung</option>
+                                <option>Xiaomi/Redmi/Poco</option>
+                                <option>Oppo</option>
+                                <option>Vivo</option>
+                                <option>Realme</option>
+                                <option>iPhone</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Keluhan / Kebutuhan</label>
+                            <textarea id="kendala" class="form-control" rows="3" placeholder="Contoh: Bootloop pas update, mau oprek Gojek..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat Penjemputan</label>
+                            <textarea id="alamat" class="form-control" rows="2" placeholder="Nama jalan, patokan, RT/RW"></textarea>
+                        </div>
+                        
+                        <!-- Location Group -->
+                        <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label style="font-size: 0.8rem;">Koordinat GPS (Otomatis)</label>
+                                <input type="text" id="lokasi" class="form-control" placeholder="Klik tombol deteksi" readonly>
+                            </div>
+                            <div style="display: flex; align-items: flex-end;">
+                                <button type="button" class="btn btn-outline" onclick="getLocation()" style="padding: 10px 15px; font-size: 0.8rem;">
+                                    📍 Deteksi
+                                </button>
+                            </div>
+                        </div>
 
-<section>
-<h2>Jasa Service HP Cimahi Terpercaya</h2>
-<p><b>jarvis.id</b> melayani jasa service HP Cimahi khusus software Android seperti flash HP, smali patcher, module smali, dan oprek HP ojol.</p>
-<p>Layanan mencakup Cimahi Utara, Cimahi Tengah, dan Cimahi Selatan dengan sistem jemput HP ke rumah.</p>
-</section>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Kirim ke WhatsApp ➔
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-<p>© 2026 <b>jarvis.id</b> – Jasa Service HP Cimahi</p>
-<p>Flash HP Cimahi | Smali Patcher Cimahi | Oprek HP Ojol Cimahi</p>
-</footer>
+    <!-- Map Section -->
+    <section id="location">
+        <div class="container">
+            <h2 class="section-title">Lokasi Workshop</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps?q=-6.872100,107.542200&z=15&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
 
-<script>
-function getLocation(){
-navigator.geolocation.getCurrentPosition(pos=>{
-lokasi.value=pos.coords.latitude.toFixed(5)+", "+pos.coords.longitude.toFixed(5);
-ongkir.value="Rp 15.000 – 30.000 (estimasi)";
-});
-}
-function sendWA(){
-let text=`Halo jarvis.id%0A
-Nama: ${nama.value}%0A
-Brand: ${brand.value}%0A
-Kebutuhan: ${kendala.value}%0A
-Alamat: ${alamat.value}%0A
-Lokasi: ${lokasi.value}%0A
-Ongkir: ${ongkir.value}`;
-window.open("https://wa.me/628XXXXXXXXXX?text="+text);
-}
-function cekStatus(){
-let kode=document.getElementById("kode").value.toUpperCase();
-let steps=document.querySelectorAll(".step");
-steps.forEach(s=>s.classList.remove("active"));
-hasil.style.display="block";
-let status=1;
-if(kode==="JRV1002") status=2;
-if(kode==="JRV1003") status=3;
-if(kode==="JRV1004") status=4;
-for(let i=0;i<status;i++) steps[i].classList.add("active");
-}
-</script>
+    <!-- Status Checker -->
+    <section id="status" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">Cek Status Perbaikan</h2>
+            <div class="status-box">
+                <p style="margin-bottom: 20px;">Masukkan Kode Unik yang Anda dapatkan saat menyerahkan HP.</p>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="kode" class="form-control" placeholder="Contoh: JRV1001" style="text-transform: uppercase; text-align: center; font-weight: bold;">
+                    <button onclick="cekStatus()" class="btn btn-primary">Cek</button>
+                </div>
 
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"LocalBusiness",
-"name":"jarvis.id Jasa Service HP Cimahi",
-"address":{"addressLocality":"Cimahi","addressRegion":"Jawa Barat","addressCountry":"ID"},
-"areaServed":"Cimahi",
-"description":"Jasa service HP Cimahi spesialis flash HP, smali patcher, module smali, dan oprek HP ojol.",
-"url":"https://jarvis.id"
-}
-</script>
+                <!-- Tracker UI -->
+                <div id="tracker" class="tracker">
+                    <div class="tracker-step" id="step1">📦 HP Diterima & Dicek</div>
+                    <div class="tracker-step" id="step2">⚙️ Sedang Dikerjakan (Flash/Repair)</div>
+                    <div class="tracker-step" id="step3">✅ Quality Control Selesai</div>
+                    <div class="tracker-step" id="step4">🚚 Siap Diantar / Diambil</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.2rem; font-weight: bold; color: white; margin-bottom: 20px;">jarvis.id</p>
+            <p>Jasa Service HP Cimahi Terpercaya & Online.</p>
+            <p style="font-size: 0.9rem; margin-top: 20px;">© 2026 jarvis.id – All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Element -->
+    <div id="toast">Pesan notifikasi...</div>
+
+    <script>
+        // --- TOAST FUNCTION (Pengganti Alert) ---
+        function showToast(message, isError = false) {
+            var toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.style.backgroundColor = isError ? "#ef4444" : "#0f172a";
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        // --- MOBILE MENU ---
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+
+        // --- GEOLOCATION ---
+        function getLocation() {
+            const lokasiInput = document.getElementById("lokasi");
+            if (navigator.geolocation) {
+                lokasiInput.value = "Mendeteksi...";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude.toFixed(5);
+                        const lng = position.coords.longitude.toFixed(5);
+                        lokasiInput.value = `${lat}, ${lng}`;
+                        showToast("Lokasi berhasil dideteksi!");
+                    },
+                    (error) => {
+                        lokasiInput.value = "";
+                        let msg = "Gagal mendeteksi lokasi.";
+                        if(error.code === 1) msg = "Izin lokasi ditolak browser.";
+                        showToast(msg, true);
+                    }
+                );
+            } else {
+                showToast("Browser tidak mendukung Geolocation.", true);
+            }
+        }
+
+        // --- WHATSAPP SENDER ---
+        function sendWA() {
+            let nama = document.getElementById("nama").value;
+            let brand = document.getElementById("brand").value;
+            let kendala = document.getElementById("kendala").value;
+            let alamat = document.getElementById("alamat").value;
+            let lokasi = document.getElementById("lokasi").value;
+
+            if (!nama || !kendala) {
+                showToast("Mohon lengkapi Nama dan Kendala.", true);
+                return;
+            }
+
+            // Format pesan
+            let text = `Halo jarvis.id, saya mau order service.%0A%0A` +
+                       `👤 *Nama:* ${nama}%0A` +
+                       `📱 *HP:* ${brand}%0A` +
+                       `🛠 *Keluhan:* ${kendala}%0A` +
+                       `📍 *Alamat:* ${alamat}%0A` +
+                       `🌍 *GPS:* ${lokasi}`;
+            
+            // Ganti nomor ini dengan nomor asli Anda (format 628...)
+            window.open("https://wa.me/6281234567890?text=" + text, "_blank");
+        }
+
+        // --- STATUS CHECKER ---
+        function cekStatus() {
+            let kode = document.getElementById("kode").value.toUpperCase();
+            let tracker = document.getElementById("tracker");
+            let steps = [document.getElementById("step1"), document.getElementById("step2"), document.getElementById("step3"), document.getElementById("step4")];
+            
+            // Reset
+            steps.forEach(s => s.classList.remove("active"));
+
+            if (!kode) {
+                showToast("Masukkan kode service dulu.", true);
+                return;
+            }
+
+            tracker.style.display = "block";
+
+            // Simulasi logika status (Hardcoded sesuai request, tapi bisa dikembangkan)
+            let statusLevel = 0; // Default: belum ada
+            
+            if (kode === "JRV1001") statusLevel = 1;
+            else if (kode === "JRV1002") statusLevel = 2;
+            else if (kode === "JRV1003") statusLevel = 3;
+            else if (kode === "JRV1004") statusLevel = 4;
+            else {
+                // Jika kode tidak dikenali, simulasi random untuk demo atau tampilkan error
+                showToast("Kode tidak ditemukan (Coba: JRV1001 - JRV1004)", true);
+                return;
+            }
+
+            // Activate Steps
+            for(let i = 0; i < statusLevel; i++) {
+                steps[i].classList.add("active");
+            }
+        }
+    </script>
+    
+    <!-- JSON LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "jarvis.id Jasa Service HP Cimahi",
+      "image": "https://jarvis.id/logo.png",
+      "telephone": "6281234567890",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cimahi",
+        "addressRegion": "Jawa Barat",
+        "addressCountry": "ID"
+      },
+      "priceRange": "$$",
+      "description": "Jasa service HP Cimahi spesialis flash HP, smali patcher, module smali, dan oprek HP ojol."
+    }
+    </script>
 </body>
 </html>
