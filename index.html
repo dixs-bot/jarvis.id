@@ -4,17 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>jarvis.id | Service HP Cimahi</title>
+<title>jarvis.id | Service HP Premium Cimahi</title>
 
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<!-- AOS ANIMATION -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 
 <body>
 
 <nav>
-    <div class="nav-container">
+    <div class="nav">
         <div class="logo"><span>jarvis</span>.id</div>
         <div class="menu">
             <a href="#services">Layanan</a>
@@ -24,60 +28,73 @@
 </nav>
 
 <header>
-    <h1>Service HP <span>Cimahi</span></h1>
-    <p>Flash • Smali • Oprek Ojol • Ganti LCD • Hardware</p>
-    <a href="#order"><button class="btn">Order Sekarang</button></a>
+    <div class="hero">
+        <h1 data-aos="fade-up">Service HP <span>Premium</span></h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            Flash • Smali • Oprek Ojol • Ganti LCD • Hardware
+        </p>
+        <button class="btn" onclick="scrollToOrder()" data-aos="zoom-in">Order Sekarang</button>
+    </div>
 </header>
 
 <section id="services">
-    <h2>Layanan Kami</h2>
+<h2 data-aos="fade-up">Layanan Unggulan</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <h3>Flash Software</h3>
-            <p>Bootloop, mati total</p>
-        </div>
+<div class="card" data-aos="fade-up">
+<h3>Flash Software</h3>
+<p>Bootloop, mati total, upgrade system</p>
+</div>
 
-        <div class="card">
-            <h3>Smali Patcher</h3>
-            <p>Bypass & module custom</p>
-        </div>
+<div class="card" data-aos="fade-up" data-aos-delay="100">
+<h3>Smali Patcher</h3>
+<p>Bypass & module custom</p>
+</div>
 
-        <div class="card">
-            <h3>Oprek Ojol</h3>
-            <p>Optimasi driver</p>
-        </div>
+<div class="card" data-aos="fade-up" data-aos-delay="200">
+<h3>Oprek Ojol</h3>
+<p>Optimasi performa driver</p>
+</div>
 
-        <div class="card">
-            <h3>Ganti LCD</h3>
-            <p>Layar pecah / blank</p>
-        </div>
+<div class="card" data-aos="fade-up" data-aos-delay="300">
+<h3>Ganti LCD</h3>
+<p>Layar pecah / blank</p>
+</div>
 
-        <div class="card">
-            <h3>Hardware</h3>
-            <p>Baterai, IC, charger</p>
-        </div>
+<div class="card" data-aos="fade-up" data-aos-delay="400">
+<h3>Hardware</h3>
+<p>Baterai, IC, charger</p>
+</div>
 
-    </div>
+</div>
 </section>
 
 <section id="order">
-    <h2>Order Service</h2>
+<h2>Order Service</h2>
 
-    <div class="form">
-        <input id="nama" placeholder="Nama">
-        <input id="hp" placeholder="Tipe HP">
-        <textarea id="keluhan" placeholder="Keluhan"></textarea>
-        <button onclick="kirim()">Kirim WhatsApp</button>
-    </div>
+<div class="form">
+<input id="nama" placeholder="Nama">
+<input id="hp" placeholder="Tipe HP">
+<textarea id="keluhan" placeholder="Keluhan"></textarea>
+<button onclick="kirim()">Kirim WhatsApp</button>
+</div>
+
 </section>
 
 <footer>
-    <p>© 2026 jarvis.id</p>
+<p>© 2026 jarvis.id</p>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <script>
+AOS.init();
+
+function scrollToOrder(){
+document.getElementById("order").scrollIntoView({behavior:"smooth"});
+}
+
 function kirim(){
 let nama=document.getElementById("nama").value;
 let hp=document.getElementById("hp").value;
