@@ -4,6 +4,165 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>jarvis.id | Service HP Premium Cimahi</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav">
+        <div class="logo"><span>jarvis</span>.id</div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header>
+    <div class="hero">
+        <h1>Service HP <span>Premium</span></h1>
+        <p>
+            Flash • Smali • Oprek Ojol • Ganti LCD • Hardware <br>
+            🚚 Bisa Jemput HP ke Rumah!
+        </p>
+        <button class="btn" onclick="scrollToOrder()">Order Sekarang</button>
+    </div>
+</header>
+
+<!-- JEMPUT -->
+<section class="pickup">
+    <div class="pickup-box">
+        <h2>🚚 Layanan Jemput HP</h2>
+        <p>Area Cimahi & sekitarnya. Bayar setelah selesai.</p>
+
+        <div class="pickup-list">
+            <div>✔ Dijemput ke rumah</div>
+            <div>✔ Aman & bergaransi</div>
+            <div>✔ Konsultasi gratis</div>
+            <div>✔ Proses cepat</div>
+        </div>
+    </div>
+</section>
+
+<!-- ORDER AUTO CLOSING -->
+<section id="order">
+<h2>Order Service</h2>
+
+<div class="form">
+
+<input id="nama" placeholder="Nama">
+<input id="hp" placeholder="Tipe HP">
+
+<select id="service" onchange="updateHarga()">
+<option value="">Pilih Service</option>
+<option value="Flash Software">Flash / Software</option>
+<option value="Smali Patcher">Smali Patcher</option>
+<option value="Oprek Ojol">Oprek HP Ojol</option>
+<option value="Ganti LCD">Ganti LCD</option>
+<option value="Service Hardware">Service Hardware</option>
+</select>
+
+<select id="layanan">
+<option value="Datang ke tempat">Datang ke tempat</option>
+<option value="Jemput ke rumah">Jemput ke rumah</option>
+</select>
+
+<div id="hasil" class="hasil-box">
+Harga: -
+<br>
+Estimasi: -
+</div>
+
+<textarea id="keluhan" placeholder="Keluhan tambahan"></textarea>
+
+<button onclick="kirim()">Kirim WhatsApp</button>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 jarvis.id</p>
+</footer>
+
+<script>
+function scrollToOrder(){
+document.getElementById("order").scrollIntoView({behavior:"smooth"});
+}
+
+function updateHarga(){
+let service=document.getElementById("service").value;
+let hasil=document.getElementById("hasil");
+
+let harga="";
+let estimasi="";
+
+if(service==="Flash Software"){
+harga="Rp 50.000 - 100.000";
+estimasi="1-2 jam";
+}
+else if(service==="Smali Patcher"){
+harga="Rp 100.000 - 250.000";
+estimasi="2-4 jam";
+}
+else if(service==="Oprek Ojol"){
+harga="Rp 150.000 - 300.000";
+estimasi="1 hari";
+}
+else if(service==="Ganti LCD"){
+harga="Rp 150.000 - 500.000";
+estimasi="1-2 jam";
+}
+else if(service==="Service Hardware"){
+harga="Rp 100.000 - 400.000";
+estimasi="Tergantung kerusakan";
+}
+else{
+harga="-";
+estimasi="-";
+}
+
+hasil.innerHTML = `💰 Harga: ${harga}<br>⏱ Estimasi: ${estimasi}`;
+}
+
+function kirim(){
+let nama=document.getElementById("nama").value;
+let hp=document.getElementById("hp").value;
+let service=document.getElementById("service").value;
+let layanan=document.getElementById("layanan").value;
+let keluhan=document.getElementById("keluhan").value;
+
+if(!nama || !service){
+alert("Isi nama & pilih service dulu");
+return;
+}
+
+let text=`Halo jarvis.id 🔧
+
+Saya mau order service:
+
+👤 Nama: ${nama}
+📱 HP: ${hp}
+🛠 Service: ${service}
+🚚 Layanan: ${layanan}
+📝 Keluhan: ${keluhan}
+
+Mohon info lanjut ya 🙏`;
+
+window.open("https://wa.me/6281234567890?text="+encodeURIComponent(text));
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>jarvis.id | Service HP Premium Tasikmalaya</title>
 
 <link rel="stylesheet" href="style.css">
