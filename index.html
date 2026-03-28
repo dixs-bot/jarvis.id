@@ -1,78 +1,81 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>jarvis.id | Jasa Service HP Cimahi – Software & Hardware</title>
+<title>jarvis.id | Service HP Cimahi</title>
 
-<meta name="description" content="jarvis.id jasa service HP Cimahi. Spesialis software & hardware Android: flash, smali patcher, oprek ojol, ganti LCD, baterai, dan perbaikan hardware lainnya.">
-<meta name="keywords" content="service hp cimahi, ganti lcd cimahi, service hardware hp cimahi, flash hp cimahi, smali patcher cimahi, oprek hp ojol cimahi">
-<meta name="author" content="jarvis.id">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="container" style="text-align:center;padding:60px 20px">
-<h1>jarvis.id</h1>
-<p>Service HP Cimahi – Software & Hardware</p>
-<p>Flash, Smali, Oprek Ojol, Ganti LCD & Service Hardware</p>
-<a href="#order"><button class="btn">Order Sekarang</button></a>
-</div>
+<nav>
+    <div class="nav-container">
+        <div class="logo"><span>jarvis</span>.id</div>
+        <div class="menu">
+            <a href="#services">Layanan</a>
+            <a href="#order">Order</a>
+        </div>
+    </div>
+</nav>
 
-<!-- LAYANAN -->
-<div class="container">
-<h2>Layanan Kami</h2>
+<header>
+    <h1>Service HP <span>Cimahi</span></h1>
+    <p>Flash • Smali • Oprek Ojol • Ganti LCD • Hardware</p>
+    <a href="#order"><button class="btn">Order Sekarang</button></a>
+</header>
 
-<div class="grid">
+<section id="services">
+    <h2>Layanan Kami</h2>
 
-<div class="card">
-<h3>Flash & Software</h3>
-<p>Bootloop, mati total, upgrade/downgrade OS</p>
-</div>
+    <div class="grid">
 
-<div class="card">
-<h3>Smali Patcher</h3>
-<p>Mock location, bypass, module custom</p>
-</div>
+        <div class="card">
+            <h3>Flash Software</h3>
+            <p>Bootloop, mati total</p>
+        </div>
 
-<div class="card">
-<h3>Oprek HP Ojol</h3>
-<p>Optimasi Grab, Gojek, ShopeeFood</p>
-</div>
+        <div class="card">
+            <h3>Smali Patcher</h3>
+            <p>Bypass & module custom</p>
+        </div>
 
-<div class="card">
-<h3>Custom ROM & Root</h3>
-<p>Magisk, ROM custom, optimasi performa</p>
-</div>
+        <div class="card">
+            <h3>Oprek Ojol</h3>
+            <p>Optimasi driver</p>
+        </div>
 
-<div class="card">
-<h3>Ganti LCD</h3>
-<p>Layar pecah, blank, ghost touch</p>
-</div>
+        <div class="card">
+            <h3>Ganti LCD</h3>
+            <p>Layar pecah / blank</p>
+        </div>
 
-<div class="card">
-<h3>Service Hardware</h3>
-<p>Baterai, IC, charger, sinyal, mati total</p>
-</div>
+        <div class="card">
+            <h3>Hardware</h3>
+            <p>Baterai, IC, charger</p>
+        </div>
 
-</div>
-</div>
+    </div>
+</section>
 
-<!-- FORM -->
-<div class="container" id="order">
-<h2>Order Service</h2>
+<section id="order">
+    <h2>Order Service</h2>
 
-<input id="nama" placeholder="Nama"><br><br>
-<input id="hp" placeholder="Tipe HP"><br><br>
-<textarea id="keluhan" placeholder="Contoh: LCD pecah / bootloop"></textarea><br><br>
+    <div class="form">
+        <input id="nama" placeholder="Nama">
+        <input id="hp" placeholder="Tipe HP">
+        <textarea id="keluhan" placeholder="Keluhan"></textarea>
+        <button onclick="kirim()">Kirim WhatsApp</button>
+    </div>
+</section>
 
-<button class="btn" onclick="kirim()">Kirim ke WhatsApp</button>
-</div>
+<footer>
+    <p>© 2026 jarvis.id</p>
+</footer>
 
 <script>
 function kirim(){
@@ -82,7 +85,7 @@ let keluhan=document.getElementById("keluhan").value;
 
 let text=`Halo jarvis.id%0A%0ANama: ${nama}%0AHP: ${hp}%0AKeluhan: ${keluhan}`;
 
-window.open("https://wa.me/6285189976233?text="+text);
+window.open("https://wa.me/6281234567890?text="+text);
 }
 </script>
 
