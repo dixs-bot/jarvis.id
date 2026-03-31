@@ -1,269 +1,993 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis.id — Service HP Profesional Tanpa Ribet</title>
+    <meta name="description" content="Service HP online terpercaya. Jemput & antar HP, proses cepat, bergaransi. Ganti LCD, oprek HP, flash, unlock, dan lainnya.">
 
-<title>jarvis.id | Service HP Premium Cimahi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        accent: { DEFAULT:'#2563eb', light:'#3b82f6', dark:'#1d4ed8', 50:'#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', glow:'rgba(37,99,235,0.15)' },
+                        surface: { DEFAULT:'#ffffff', 50:'#f8fafc', 100:'#f1f5f9', 200:'#e2e8f0', 300:'#cbd5e1' },
+                        ink: { DEFAULT:'#0f172a', secondary:'#475569', tertiary:'#94a3b8' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#fff; color:#0f172a; overflow-x:hidden; }
+        h1,h2,h3,h4,h5,h6 { font-family:'Space Grotesk',sans-serif; }
+
+        /* ── Loading Screen ── */
+        #loader { position:fixed; inset:0; z-index:9999; background:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity .6s, visibility .6s; }
+        #loader.hidden { opacity:0; visibility:hidden; }
+        .loader-logo { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:#2563eb; margin-bottom:2rem; letter-spacing:-.02em; }
+        .loader-logo span { color:#0f172a; }
+        .loader-bar { width:200px; height:3px; background:#e2e8f0; border-radius:99px; overflow:hidden; }
+        .loader-bar-inner { height:100%; width:0; background:linear-gradient(90deg,#2563eb,#06b6d4); border-radius:99px; animation:loaderFill 1.8s cubic-bezier(.4,0,.2,1) forwards; }
+        @keyframes loaderFill { to { width:100%; } }
+
+        /* ── Glass ── */
+        .glass { background:rgba(255,255,255,.72); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid rgba(37,99,235,.08); }
+        .glass-dark { background:rgba(15,23,42,.6); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid rgba(255,255,255,.08); }
+
+        /* ── Glow ── */
+        .glow { box-shadow:0 0 20px rgba(37,99,235,.12); }
+        .glow-strong { box-shadow:0 0 30px rgba(37,99,235,.2), 0 0 60px rgba(37,99,235,.08); }
+        .glow-text { text-shadow:0 0 40px rgba(37,99,235,.3); }
+
+        /* ── Tech Grid ── */
+        .tech-grid {
+            background-image:
+                linear-gradient(rgba(37,99,235,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37,99,235,.035) 1px, transparent 1px);
+            background-size:48px 48px;
+        }
+
+        /* ── Gradient Text ── */
+        .gradient-text {
+            background:linear-gradient(135deg,#2563eb 0%,#06b6d4 100%);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+
+        /* ── Scroll Reveal ── */
+        .reveal { opacity:0; transform:translateY(32px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+        .reveal-left { opacity:0; transform:translateX(-32px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+        .reveal-right { opacity:0; transform:translateX(32px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+        .reveal-scale { opacity:0; transform:scale(.92); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+        .reveal.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active { opacity:1; transform:translate(0) scale(1); }
+        .delay-1 { transition-delay:.1s; } .delay-2 { transition-delay:.2s; } .delay-3 { transition-delay:.3s; }
+        .delay-4 { transition-delay:.4s; } .delay-5 { transition-delay:.5s; } .delay-6 { transition-delay:.6s; }
+        .delay-7 { transition-delay:.7s; } .delay-8 { transition-delay:.8s; }
+
+        /* ── Service Card ── */
+        .service-card {
+            transition:all .4s cubic-bezier(.16,1,.3,1);
+            position:relative; overflow:hidden;
+        }
+        .service-card::before {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg,rgba(37,99,235,.04),transparent);
+            opacity:0; transition:opacity .4s;
+        }
+        .service-card:hover { transform:translateY(-8px); box-shadow:0 0 30px rgba(37,99,235,.12), 0 20px 60px rgba(0,0,0,.06); border-color:rgba(37,99,235,.2); }
+        .service-card:hover::before { opacity:1; }
+        .service-card:hover .service-icon { background:linear-gradient(135deg,#2563eb,#3b82f6); color:#fff; transform:scale(1.08); }
+        .service-icon { transition:all .4s cubic-bezier(.16,1,.3,1); }
+
+        /* ── Feature Item ── */
+        .feature-item { transition:all .3s; }
+        .feature-item:hover { transform:translateY(-4px); }
+        .feature-item:hover .feature-icon-wrap { box-shadow:0 0 24px rgba(37,99,235,.2); }
+
+        /* ── Step Line ── */
+        .step-line { position:relative; }
+        .step-line::after {
+            content:''; position:absolute; top:28px; left:56px; right:0; height:2px;
+            background:linear-gradient(90deg,#2563eb,rgba(37,99,235,.1));
+        }
+        .step-line:last-child::after { display:none; }
+
+        /* ── Testimonial Card ── */
+        .testimonial-card { transition:all .4s cubic-bezier(.16,1,.3,1); }
+        .testimonial-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.08); }
+
+        /* ── Floating Particles (Hero) ── */
+        .particle {
+            position:absolute; border-radius:50%; pointer-events:none;
+            background:rgba(59,130,246,.4);
+            animation:particleFloat linear infinite;
+        }
+        @keyframes particleFloat {
+            0% { transform:translateY(0) translateX(0) scale(1); opacity:0; }
+            10% { opacity:1; }
+            90% { opacity:1; }
+            100% { transform:translateY(-100vh) translateX(40px) scale(.3); opacity:0; }
+        }
+
+        /* ── Pulse Ring ── */
+        .pulse-ring { animation:pulseRing 2.5s ease-out infinite; }
+        @keyframes pulseRing {
+            0% { transform:scale(1); opacity:.6; }
+            100% { transform:scale(1.8); opacity:0; }
+        }
+
+        /* ── CTA Button ── */
+        .btn-primary {
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);
+            color:#fff; font-weight:600; border-radius:14px;
+            padding:16px 36px; font-size:1rem;
+            transition:all .3s cubic-bezier(.16,1,.3,1);
+            box-shadow:0 4px 20px rgba(37,99,235,.3);
+            position:relative; overflow:hidden;
+        }
+        .btn-primary::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+            opacity:0; transition:opacity .3s;
+        }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(37,99,235,.4); }
+        .btn-primary:hover::after { opacity:1; }
+        .btn-primary:active { transform:translateY(0); }
+
+        .btn-secondary {
+            background:rgba(255,255,255,.1); color:#fff; font-weight:600;
+            border-radius:14px; padding:16px 36px; font-size:1rem;
+            border:1px solid rgba(255,255,255,.25);
+            transition:all .3s cubic-bezier(.16,1,.3,1);
+            backdrop-filter:blur(8px);
+        }
+        .btn-secondary:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.4); transform:translateY(-2px); }
+
+        .btn-outline {
+            background:transparent; color:#2563eb; font-weight:600;
+            border-radius:14px; padding:16px 36px; font-size:1rem;
+            border:2px solid #2563eb;
+            transition:all .3s cubic-bezier(.16,1,.3,1);
+        }
+        .btn-outline:hover { background:#2563eb; color:#fff; transform:translateY(-2px); box-shadow:0 8px 30px rgba(37,99,235,.3); }
+
+        /* ── WhatsApp Float ── */
+        .wa-float {
+            position:fixed; bottom:28px; right:28px; z-index:900;
+            width:60px; height:60px; border-radius:50%;
+            background:#25d366; color:#fff;
+            display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 20px rgba(37,211,102,.4);
+            transition:all .3s; cursor:pointer;
+        }
+        .wa-float:hover { transform:scale(1.1); box-shadow:0 6px 30px rgba(37,211,102,.5); }
+        .wa-float::before {
+            content:''; position:absolute; inset:-6px; border-radius:50%;
+            background:rgba(37,211,102,.25);
+            animation:pulseRing 2s ease-out infinite;
+        }
+
+        /* ── Mobile Menu ── */
+        .mobile-menu {
+            position:fixed; inset:0; z-index:800; background:rgba(255,255,255,.97);
+            backdrop-filter:blur(24px);
+            transform:translateX(100%); transition:transform .4s cubic-bezier(.16,1,.3,1);
+        }
+        .mobile-menu.open { transform:translateX(0); }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:#f1f5f9; }
+        ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:99px; }
+        ::-webkit-scrollbar-thumb:hover { background:#94a3b8; }
+
+        /* ── Star Rating ── */
+        .star { color:#f59e0b; }
+
+        /* ── Decorative ── */
+        .deco-circle {
+            position:absolute; border-radius:50%; pointer-events:none;
+            border:1px solid rgba(37,99,235,.08);
+        }
+
+        /* ── Navbar transition ── */
+        .nav-scrolled { background:rgba(255,255,255,.88)!important; backdrop-filter:blur(20px)!important; box-shadow:0 1px 20px rgba(0,0,0,.06)!important; border-bottom:1px solid rgba(37,99,235,.06)!important; }
+
+        /* ── Hero BG Overlay ── */
+        .hero-overlay {
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(37,99,235,.15) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(15,23,42,.88) 0%, rgba(15,23,42,.75) 50%, rgba(15,23,42,.92) 100%);
+        }
+
+        /* ── Misc ── */
+        .no-scrollbar::-webkit-scrollbar { display:none; }
+        .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+    </style>
 </head>
+<body class="font-body antialiased">
 
-<body>
-
-<!-- NAV -->
-<nav>
-    <div class="nav">
-        <div class="logo"><span>jarvis</span>.id</div>
+    <!-- ══════════ LOADING SCREEN ══════════ -->
+    <div id="loader">
+        <div class="loader-logo">Jarvis<span>.id</span></div>
+        <div class="loader-bar"><div class="loader-bar-inner"></div></div>
     </div>
-</nav>
 
-<!-- HERO -->
-<header>
-    <div class="hero">
-        <h1>Service HP <span>Premium</span></h1>
-        <p>
-            Flash • Smali • Oprek Ojol • Ganti LCD • Hardware <br>
-            🚚 Bisa Jemput HP ke Rumah!
-        </p>
-        <button class="btn" onclick="scrollToOrder()">Order Sekarang</button>
-    </div>
-</header>
+    <!-- ══════════ NAVBAR ══════════ -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background:transparent;">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="flex items-center justify-between h-[72px]">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 relative z-50">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-blue-400 flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="font-heading font-bold text-xl tracking-tight">
+                        <span class="text-white" id="nav-logo-text">Jarvis</span><span class="gradient-text" id="nav-logo-dot">.id</span>
+                    </span>
+                </a>
 
-<!-- JEMPUT -->
-<section class="pickup">
-    <div class="pickup-box">
-        <h2>🚚 Layanan Jemput HP</h2>
-        <p>Area Cimahi & sekitarnya. Bayar setelah selesai.</p>
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#layanan" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors" id="nav-layanan">Layanan</a>
+                    <a href="#fitur" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors" id="nav-fitur">Fitur</a>
+                    <a href="#cara-kerja" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors" id="nav-cara">Cara Kerja</a>
+                    <a href="#testimoni" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors" id="nav-testi">Testimoni</a>
+                    <a href="#harga" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors" id="nav-harga">Harga</a>
+                </div>
 
-        <div class="pickup-list">
-            <div>✔ Dijemput ke rumah</div>
-            <div>✔ Aman & bergaransi</div>
-            <div>✔ Konsultasi gratis</div>
-            <div>✔ Proses cepat</div>
+                <!-- CTA Desktop -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20ingin%20konsultasi%20service%20HP" target="_blank"
+                       class="btn-primary !py-3 !px-6 !text-sm !rounded-xl !shadow-lg" id="nav-cta">
+                        Order Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button id="menu-toggle" class="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-xl" aria-label="Menu">
+                    <i data-lucide="menu" class="w-6 h-6 text-white" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════ MOBILE MENU ══════════ -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="flex flex-col h-full px-8 pt-24 pb-10">
+            <div class="flex flex-col gap-1 flex-1">
+                <a href="#layanan" class="mobile-nav-link text-2xl font-heading font-semibold text-ink py-3 border-b border-surface-100 hover:text-accent transition-colors">Layanan</a>
+                <a href="#fitur" class="mobile-nav-link text-2xl font-heading font-semibold text-ink py-3 border-b border-surface-100 hover:text-accent transition-colors">Fitur</a>
+                <a href="#cara-kerja" class="mobile-nav-link text-2xl font-heading font-semibold text-ink py-3 border-b border-surface-100 hover:text-accent transition-colors">Cara Kerja</a>
+                <a href="#testimoni" class="mobile-nav-link text-2xl font-heading font-semibold text-ink py-3 border-b border-surface-100 hover:text-accent transition-colors">Testimoni</a>
+                <a href="#harga" class="mobile-nav-link text-2xl font-heading font-semibold text-ink py-3 border-b border-surface-100 hover:text-accent transition-colors">Harga</a>
+            </div>
+            <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20ingin%20order%20service%20HP" target="_blank"
+               class="btn-primary w-full text-center !rounded-xl">
+                Order Sekarang
+            </a>
         </div>
     </div>
-</section>
 
-<!-- ORDER AUTO CLOSING -->
-<section id="order">
-<h2>Order Service</h2>
-
-<div class="form">
-
-<input id="nama" placeholder="Nama">
-<input id="hp" placeholder="Tipe HP">
-
-<select id="service" onchange="updateHarga()">
-<option value="">Pilih Service</option>
-<option value="Flash Software">Flash / Software</option>
-<option value="Smali Patcher">Smali Patcher</option>
-<option value="Oprek Ojol">Oprek HP Ojol</option>
-<option value="Ganti LCD">Ganti LCD</option>
-<option value="Service Hardware">Service Hardware</option>
-</select>
-
-<select id="layanan">
-<option value="Datang ke tempat">Datang ke tempat</option>
-<option value="Jemput ke rumah">Jemput ke rumah</option>
-</select>
-
-<div id="hasil" class="hasil-box">
-Harga: -
-<br>
-Estimasi: -
-</div>
-
-<textarea id="keluhan" placeholder="Keluhan tambahan"></textarea>
-
-<button onclick="kirim()">Kirim WhatsApp</button>
-
-</div>
-
-</section>
-
-<footer>
-<p>© 2026 jarvis.id</p>
-</footer>
-
-<script>
-function scrollToOrder(){
-document.getElementById("order").scrollIntoView({behavior:"smooth"});
-}
-
-function updateHarga(){
-let service=document.getElementById("service").value;
-let hasil=document.getElementById("hasil");
-
-let harga="";
-let estimasi="";
-
-if(service==="Flash Software"){
-harga="Rp 50.000 - 100.000";
-estimasi="1-2 jam";
-}
-else if(service==="Smali Patcher"){
-harga="Rp 100.000 - 250.000";
-estimasi="2-4 jam";
-}
-else if(service==="Oprek Ojol"){
-harga="Rp 150.000 - 300.000";
-estimasi="1 hari";
-}
-else if(service==="Ganti LCD"){
-harga="Rp 150.000 - 500.000";
-estimasi="1-2 jam";
-}
-else if(service==="Service Hardware"){
-harga="Rp 100.000 - 400.000";
-estimasi="Tergantung kerusakan";
-}
-else{
-harga="-";
-estimasi="-";
-}
-
-hasil.innerHTML = `💰 Harga: ${harga}<br>⏱ Estimasi: ${estimasi}`;
-}
-
-function kirim(){
-let nama=document.getElementById("nama").value;
-let hp=document.getElementById("hp").value;
-let service=document.getElementById("service").value;
-let layanan=document.getElementById("layanan").value;
-let keluhan=document.getElementById("keluhan").value;
-
-if(!nama || !service){
-alert("Isi nama & pilih service dulu");
-return;
-}
-
-let text=`Halo jarvis.id 🔧
-
-Saya mau order service:
-
-👤 Nama: ${nama}
-📱 HP: ${hp}
-🛠 Service: ${service}
-🚚 Layanan: ${layanan}
-📝 Keluhan: ${keluhan}
-
-Mohon info lanjut ya 🙏`;
-
-window.open("https://wa.me/6281234567890?text="+encodeURIComponent(text));
-}
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>jarvis.id | Service HP Premium Tasikmalaya</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
-<!-- AOS ANIMATION -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<nav>
-    <div class="nav">
-        <div class="logo"><span>jarvis</span>.id</div>
-        <div class="menu">
-            <a href="#services">Layanan</a>
-            <a href="#order">Order</a>
+    <!-- ══════════ HERO SECTION ══════════ -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://picsum.photos/seed/smartphone-repair-tech/1920/1080.jpg" alt="Service HP Profesional"
+                 class="w-full h-full object-cover" loading="eager">
+            <div class="hero-overlay absolute inset-0"></div>
         </div>
-    </div>
-</nav>
 
-<header>
-    <div class="hero">
-        <h1 data-aos="fade-up">Service HP <span>Premium</span></h1>
-        <p data-aos="fade-up" data-aos-delay="100">
-            Flash • Smali • Oprek Ojol • Ganti LCD • Hardware
-        </p>
-        <button class="btn" onclick="scrollToOrder()" data-aos="zoom-in">Order Sekarang</button>
-    </div>
-</header>
+        <!-- Particles -->
+        <div id="particles" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
-<section id="services">
-<h2 data-aos="fade-up">Layanan Unggulan</h2>
+        <!-- Decorative Circles -->
+        <div class="deco-circle w-[600px] h-[600px] -top-48 -right-48 opacity-30" style="border-color:rgba(59,130,246,.12);"></div>
+        <div class="deco-circle w-[400px] h-[400px] -bottom-32 -left-32 opacity-20" style="border-color:rgba(6,182,212,.12);"></div>
 
-<div class="grid">
+        <!-- Content -->
+        <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
+            <!-- Badge -->
+            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sm text-white/80 mb-8">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                AI-Powered Service Platform
+            </div>
 
-<div class="card" data-aos="fade-up">
-<h3>Flash Software</h3>
-<p>Bootloop, mati total, upgrade system</p>
-</div>
+            <!-- Headline -->
+            <h1 class="reveal delay-1 font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.08] tracking-tight mb-6">
+                Service HP Profesional<br>
+                <span class="gradient-text glow-text">Tanpa Ribet</span>
+            </h1>
 
-<div class="card" data-aos="fade-up" data-aos-delay="100">
-<h3>Smali Patcher</h3>
-<p>Bypass & module custom</p>
-</div>
+            <!-- Subheadline -->
+            <p class="reveal delay-2 text-lg sm:text-xl text-white/65 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Dari ganti LCD sampai oprek sistem — semua bisa di Jarvis.id.<br class="hidden sm:block">
+                Jemput, service, antar. Anda tinggal tunggu di rumah.
+            </p>
 
-<div class="card" data-aos="fade-up" data-aos-delay="200">
-<h3>Oprek Ojol</h3>
-<p>Optimasi performa driver</p>
-</div>
+            <!-- CTAs -->
+            <div class="reveal delay-3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+                <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20jemput%20HP%20saya%20untuk%20di-service" target="_blank"
+                   class="btn-primary flex items-center gap-2 w-full sm:w-auto justify-center">
+                    <i data-lucide="truck" class="w-5 h-5"></i>
+                    Jemput HP Saya
+                </a>
+                <a href="#layanan" class="btn-secondary flex items-center gap-2 w-full sm:w-auto justify-center">
+                    <i data-lucide="grid-3x3" class="w-5 h-5"></i>
+                    Lihat Layanan
+                </a>
+            </div>
 
-<div class="card" data-aos="fade-up" data-aos-delay="300">
-<h3>Ganti LCD</h3>
-<p>Layar pecah / blank</p>
-</div>
+            <!-- Trust Indicators -->
+            <div class="reveal delay-4 flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+                <div class="flex items-center gap-2 text-white/50 text-sm">
+                    <i data-lucide="smartphone" class="w-4 h-4 text-accent-light"></i>
+                    <span><strong class="text-white/80 font-semibold">5,000+</strong> HP Diservis</span>
+                </div>
+                <div class="flex items-center gap-2 text-white/50 text-sm">
+                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                    <span><strong class="text-white/80 font-semibold">4.9</strong> Rating</span>
+                </div>
+                <div class="flex items-center gap-2 text-white/50 text-sm">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                    <span><strong class="text-white/80 font-semibold">90 Hari</strong> Garansi</span>
+                </div>
+            </div>
+        </div>
 
-<div class="card" data-aos="fade-up" data-aos-delay="400">
-<h3>Hardware</h3>
-<p>Baterai, IC, charger</p>
-</div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 text-xs">
+            <span>Scroll</span>
+            <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
+                <div class="w-1 h-2 rounded-full bg-white/50 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
 
-</div>
-</section>
+    <!-- ══════════ SERVICES SECTION ══════════ -->
+    <section id="layanan" class="relative py-24 sm:py-32 bg-white tech-grid overflow-hidden">
+        <!-- Deco -->
+        <div class="deco-circle w-[500px] h-[500px] -top-64 -right-64 opacity-40"></div>
+        <div class="deco-circle w-[300px] h-[300px] bottom-0 -left-40 opacity-30"></div>
 
-<section id="order">
-<h2>Order Service</h2>
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 sm:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-50 text-accent text-sm font-medium mb-5">
+                    <i data-lucide="wrench" class="w-4 h-4"></i>
+                    Layanan Lengkap
+                </div>
+                <h2 class="reveal delay-1 font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight mb-4">
+                    Semua Masalah HP,<br><span class="gradient-text">Satu Solusi</span>
+                </h2>
+                <p class="reveal delay-2 text-ink-secondary text-lg max-w-xl mx-auto font-light">
+                    Dari hardware sampai software, teknisi kami siap menangani semua jenis perbaikan HP Anda.
+                </p>
+            </div>
 
-<div class="form">
-<input id="nama" placeholder="Nama">
-<input id="hp" placeholder="Tipe HP">
-<textarea id="keluhan" placeholder="Keluhan"></textarea>
-<button onclick="kirim()">Kirim WhatsApp</button>
-</div>
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Card 1 -->
+                <div class="reveal delay-1 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="monitor-smartphone" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Ganti LCD</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">LCD retak, blank, atau ghost touch? Ganti original berkualitas dengan garansi.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="reveal delay-2 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="bike" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Oprek HP OJOL</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Optimasi HP khusus driver ojol online. Unlock, bypass, dan performa maksimal.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="reveal delay-3 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="circuit-board" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Modif Hardware</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Upgrade RAM, storage, kamera, dan modifikasi hardware lainnya sesuai kebutuhan.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="reveal delay-4 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="download" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Flash HP</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Flash firmware, install custom ROM, root & non-root. Fix bootloop dan softbrick.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="reveal delay-5 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="code-2" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Install Smali Patcher</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Patching aplikasi tingkat lanjut untuk bypass security, modifikasi, dan custom fitur.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="reveal delay-6 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="lock-open" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Unlock & Bypass</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Unlock bootloader, bypass FRP, MI Account, Samsung, dan berbagai security lock.</p>
+                </div>
+                <!-- Card 7 -->
+                <div class="reveal delay-7 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="battery-charging" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Ganti Baterai</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Baterai drop, ngebul, atau bocor? Ganti baterai original dengan garansi panjang.</p>
+                </div>
+                <!-- Card 8 -->
+                <div class="reveal delay-8 service-card bg-white rounded-2xl p-6 border border-surface-200 cursor-pointer">
+                    <div class="service-icon w-14 h-14 rounded-2xl bg-accent-50 text-accent flex items-center justify-center mb-5">
+                        <i data-lucide="settings" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-ink mb-2">Tuning System</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Optimasi performa, debloat bloatware, tweak kernel, dan konfigurasi system advanced.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- ══════════ FEATURES SECTION ══════════ -->
+    <section id="fitur" class="relative py-24 sm:py-32 bg-surface-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 sm:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-50 text-accent text-sm font-medium mb-5">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    Kenapa Jarvis.id?
+                </div>
+                <h2 class="reveal delay-1 font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight mb-4">
+                    Fitur <span class="gradient-text">Unggulan</span>
+                </h2>
+                <p class="reveal delay-2 text-ink-secondary text-lg max-w-xl mx-auto font-light">
+                    Pengalaman service HP yang berbeda — lebih mudah, lebih cepat, lebih aman.
+                </p>
+            </div>
 
-<footer>
-<p>© 2026 jarvis.id</p>
-</footer>
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="reveal delay-1 feature-item bg-white rounded-2xl p-6 text-center border border-surface-200">
+                    <div class="feature-icon-wrap w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/10 to-blue-100 flex items-center justify-center mx-auto mb-4 transition-shadow duration-300">
+                        <i data-lucide="truck" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-ink mb-2">Jemput & Antar</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Tinggal di rumah, kurir kami yang jemput dan antar HP Anda.</p>
+                </div>
+                <div class="reveal delay-2 feature-item bg-white rounded-2xl p-6 text-center border border-surface-200">
+                    <div class="feature-icon-wrap w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/10 to-blue-100 flex items-center justify-center mx-auto mb-4 transition-shadow duration-300">
+                        <i data-lucide="zap" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-ink mb-2">Proses Cepat</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Estimasi 1–3 jam untuk kebanyakan perbaikan. Tidak perlu tunggu lama.</p>
+                </div>
+                <div class="reveal delay-3 feature-item bg-white rounded-2xl p-6 text-center border border-surface-200">
+                    <div class="feature-icon-wrap w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/10 to-blue-100 flex items-center justify-center mx-auto mb-4 transition-shadow duration-300">
+                        <i data-lucide="shield-check" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-ink mb-2">Aman & Bergaransi</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Data aman terenkripsi. Setiap service bergaransi hingga 90 hari.</p>
+                </div>
+                <div class="reveal delay-4 feature-item bg-white rounded-2xl p-6 text-center border border-surface-200">
+                    <div class="feature-icon-wrap w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/10 to-blue-100 flex items-center justify-center mx-auto mb-4 transition-shadow duration-300">
+                        <i data-lucide="smartphone" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-ink mb-2">Semua Brand</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Samsung, iPhone, Xiaomi, OPPO, Vivo, Realme, ASUS, dan lainnya.</p>
+                </div>
+                <div class="reveal delay-5 feature-item bg-white rounded-2xl p-6 text-center border border-surface-200">
+                    <div class="feature-icon-wrap w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/10 to-blue-100 flex items-center justify-center mx-auto mb-4 transition-shadow duration-300">
+                        <i data-lucide="brain" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-ink mb-2">Teknisi Expert</h3>
+                    <p class="text-ink-secondary text-sm leading-relaxed">Tim bersertifikat dengan pengalaman 5+ tahun di bidangnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- ══════════ HOW IT WORKS ══════════ -->
+    <section id="cara-kerja" class="relative py-24 sm:py-32 bg-white tech-grid overflow-hidden">
+        <div class="deco-circle w-[400px] h-[400px] top-20 -right-48 opacity-30"></div>
 
-<script>
-AOS.init();
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 sm:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-50 text-accent text-sm font-medium mb-5">
+                    <i data-lucide="route" class="w-4 h-4"></i>
+                    Cara Kerja
+                </div>
+                <h2 class="reveal delay-1 font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight mb-4">
+                    4 Langkah <span class="gradient-text">Mudah</span>
+                </h2>
+                <p class="reveal delay-2 text-ink-secondary text-lg max-w-xl mx-auto font-light">
+                    Tidak perlu ke luar rumah. Semua proses dari genggaman tangan Anda.
+                </p>
+            </div>
 
-function scrollToOrder(){
-document.getElementById("order").scrollIntoView({behavior:"smooth"});
-}
+            <!-- Steps -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+                <!-- Step 1 -->
+                <div class="reveal delay-1 relative">
+                    <div class="bg-white rounded-2xl p-6 border border-surface-200 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-blue-400 flex items-center justify-center text-white font-heading font-bold text-xl mb-5 shadow-lg shadow-accent/20">1</div>
+                        <h3 class="font-heading font-semibold text-lg text-ink mb-2">Order Online</h3>
+                        <p class="text-ink-secondary text-sm leading-relaxed">Pilih layanan & order via website atau WhatsApp. Tentukan jadwal jemput.</p>
+                    </div>
+                    <!-- Arrow (hidden on mobile & last) -->
+                    <div class="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-surface-300">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="reveal delay-2 relative">
+                    <div class="bg-white rounded-2xl p-6 border border-surface-200 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-blue-400 flex items-center justify-center text-white font-heading font-bold text-xl mb-5 shadow-lg shadow-accent/20">2</div>
+                        <h3 class="font-heading font-semibold text-lg text-ink mb-2">Kurir Jemput</h3>
+                        <p class="text-ink-secondary text-sm leading-relaxed">Kurir datang ke lokasi Anda sesuai jadwal. HP di-pack aman & terdokumentasi.</p>
+                    </div>
+                    <div class="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-surface-300">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="reveal delay-3 relative">
+                    <div class="bg-white rounded-2xl p-6 border border-surface-200 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-blue-400 flex items-center justify-center text-white font-heading font-bold text-xl mb-5 shadow-lg shadow-accent/20">3</div>
+                        <h3 class="font-heading font-semibold text-lg text-ink mb-2">Proses Service</h3>
+                        <p class="text-ink-secondary text-sm leading-relaxed">Teknisi mengerjakan perbaikan. Anda bisa pantau progress secara real-time.</p>
+                    </div>
+                    <div class="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-surface-300">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="reveal delay-4">
+                    <div class="bg-white rounded-2xl p-6 border border-surface-200 h-full">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-blue-400 flex items-center justify-center text-white font-heading font-bold text-xl mb-5 shadow-lg shadow-accent/20">4</div>
+                        <h3 class="font-heading font-semibold text-lg text-ink mb-2">HP Diantar Kembali</h3>
+                        <p class="text-ink-secondary text-sm leading-relaxed">HP selesai & diantar ke rumah Anda. Bayar setelah Anda puas & cek HP.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-function kirim(){
-let nama=document.getElementById("nama").value;
-let hp=document.getElementById("hp").value;
-let keluhan=document.getElementById("keluhan").value;
+    <!-- ══════════ TESTIMONIALS ══════════ -->
+    <section id="testimoni" class="relative py-24 sm:py-32 bg-surface-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 sm:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-50 text-accent text-sm font-medium mb-5">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    Testimoni
+                </div>
+                <h2 class="reveal delay-1 font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight mb-4">
+                    Apa Kata <span class="gradient-text">Mereka?</span>
+                </h2>
+                <p class="reveal delay-2 text-ink-secondary text-lg max-w-xl mx-auto font-light">
+                    Ribuan pelanggan puas dengan layanan Jarvis.id.
+                </p>
+            </div>
 
-let text=`Halo jarvis.id%0A%0ANama: ${nama}%0AHP: ${hp}%0AKeluhan: ${keluhan}`;
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testi 1 -->
+                <div class="reveal delay-1 testimonial-card glass rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                    </div>
+                    <p class="text-ink text-sm leading-relaxed mb-6">"LCD iPhone saya retak parah, tapi setelah diganti di Jarvis.id hasilnya mulus banget. Prosesnya cepat, kurirnya ramah, dan harganya fair. Recommended!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://picsum.photos/seed/user-andi/80/80.jpg" alt="Andi Pratama" class="w-11 h-11 rounded-full object-cover border-2 border-accent-100">
+                        <div>
+                            <p class="font-heading font-semibold text-ink text-sm">Andi Pratama</p>
+                            <p class="text-ink-tertiary text-xs">iPhone 14 Pro Max — Ganti LCD</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testi 2 -->
+                <div class="reveal delay-2 testimonial-card glass rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                    </div>
+                    <p class="text-ink text-sm leading-relaxed mb-6">"HP OJOL saya dioprek biar lebih smooth. Baterai lebih awet, performa naik drastis. Sekarang narik order jadi lebih lancar. Makasih Jarvis.id!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://picsum.photos/seed/user-sari/80/80.jpg" alt="Sari Wulandari" class="w-11 h-11 rounded-full object-cover border-2 border-accent-100">
+                        <div>
+                            <p class="font-heading font-semibold text-ink text-sm">Sari Wulandari</p>
+                            <p class="text-ink-tertiary text-xs">Redmi Note 12 — Oprek OJOL</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testi 3 -->
+                <div class="reveal delay-3 testimonial-card glass rounded-2xl p-7">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 star fill-amber-400"></i>
+                    </div>
+                    <p class="text-ink text-sm leading-relaxed mb-6">"HP Samsung saya ke-lock FRP, udah ke beberapa tempat nggak bisa. Di Jarvis.id langsung terbuka dalam 30 menit. Data saya juga aman semua. Top!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://picsum.photos/seed/user-budi/80/80.jpg" alt="Budi Santoso" class="w-11 h-11 rounded-full object-cover border-2 border-accent-100">
+                        <div>
+                            <p class="font-heading font-semibold text-ink text-sm">Budi Santoso</p>
+                            <p class="text-ink-tertiary text-xs">Samsung A54 — Bypass FRP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-window.open("https://wa.me/6281234567890?text="+text);
-}
-</script>
+    <!-- ══════════ PRICING SECTION ══════════ -->
+    <section id="harga" class="relative py-24 sm:py-32 bg-white tech-grid overflow-hidden">
+        <div class="deco-circle w-[500px] h-[500px] -bottom-64 -left-64 opacity-30"></div>
 
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 sm:mb-20">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-50 text-accent text-sm font-medium mb-5">
+                    <i data-lucide="tag" class="w-4 h-4"></i>
+                    Estimasi Harga
+                </div>
+                <h2 class="reveal delay-1 font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight mb-4">
+                    Harga <span class="gradient-text">Transparan</span>
+                </h2>
+                <p class="reveal delay-2 text-ink-secondary text-lg max-w-xl mx-auto font-light">
+                    Estimasi harga awal. Harga final akan dikonfirmasi setelah diagnostic.
+                </p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Price 1 -->
+                <div class="reveal delay-1 bg-white rounded-2xl p-7 border border-surface-200 hover:border-accent/20 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+                            <i data-lucide="monitor-smartphone" class="w-5 h-5 text-accent"></i>
+                        </div>
+                        <h3 class="font-heading font-semibold text-ink">Ganti LCD</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-heading font-bold text-3xl text-ink">250rb</span>
+                        <span class="text-ink-tertiary text-sm ml-1">mulai dari</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-ink-secondary"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i> LCD Original / OEM</li>
+                        <li class="flex items-center gap-2 text-sm text-ink-secondary"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i> Garansi 90 hari</li>
+                        <li class="flex items-center gap-2 text-sm text-ink-secondary"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i> Proses 1–2 jam</li>
+                    </ul>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20tanya%20harga%20ganti%20LCD" target="_blank"
+                       class="btn-outline w-full text-center block !text-sm !py-3 !rounded-xl">Konsultasi Gratis</a>
+                </div>
+                <!-- Price 2 - Popular -->
+                <div class="reveal delay-2 bg-gradient-to-br from-accent to-blue-700 rounded-2xl p-7 text-white relative overflow-hidden shadow-xl shadow-accent/20">
+                    <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full">Populer</div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+                            <i data-lucide="bike" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-semibold">Oprek HP OJOL</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-heading font-bold text-3xl">150rb</span>
+                        <span class="text-white/60 text-sm ml-1">mulai dari</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-white/85"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Unlock & optimasi</li>
+                        <li class="flex items-center gap-2 text-sm text-white/85"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Tuning performa</li>
+                        <li class="flex items-center gap-2 text-sm text-white/85"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Hemat baterai</li>
+                        <li class="flex items-center gap-2 text-sm text-white/85"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Garansi 30 hari</li>
+                    </ul>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20oprek%20HP%20untuk%20OJOL" target="_blank"
+                       class="w-full text-center block bg-white text-accent font-semibold text-sm py-3 rounded-xl hover:bg-white/90 transition-colors">Order Sekarang</a>
+                </div>
+                <!-- Price 3 -->
+                <div class="reveal delay-3 bg-white rounded-2xl p-7 border border-surface-200 hover:border-accent/20 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+                            <i data-lucide="lock-open" class="w-5 h-5 text-accent"></i>
+                        </div>
+                        <h3 class="font-heading font-semibold text-ink">Unlock / Bypass</h3>
+                    </div>
+                    <div class="mb-4">
+                        <span class="font-heading font-bold text-3xl text-ink">100rb</span>
+                        <span class="text-ink-tertiary text-sm ml-1">mulai dari</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-ink-secondary"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i> FRP / MI Account</li>
+                        <li class="flex items-center gap-2 text-sm text-ink-secondary"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i> Data tetap aman</li>
+                        <li class="flex items-center gap-2 text-sm text-ink-secondary"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i> Proses 30–60 menit</li>
+                    </ul>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20tanya%20unlock%20HP" target="_blank"
+                       class="btn-outline w-full text-center block !text-sm !py-3 !rounded-xl">Konsultasi Gratis</a>
+                </div>
+            </div>
+
+            <!-- Note -->
+            <p class="reveal text-center text-ink-tertiary text-sm mt-10">
+                * Harga dapat bervariasi tergantung tipe HP dan tingkat kerusakan. Konsultasi gratis via WhatsApp.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════ BIG CTA SECTION ══════════ -->
+    <section class="relative py-24 sm:py-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900"></div>
+        <!-- Tech Grid Overlay -->
+        <div class="absolute inset-0" style="background-image:linear-gradient(rgba(59,130,246,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(59,130,246,.06) 1px, transparent 1px);background-size:48px 48px;"></div>
+        <!-- Glow orbs -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-5 sm:px-8 relative text-center">
+            <div class="reveal">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5 leading-tight">
+                    Siap Servis HP<br><span class="gradient-text glow-text">Tanpa Ribet?</span>
+                </h2>
+                <p class="text-white/60 text-lg max-w-xl mx-auto mb-10 font-light">
+                    Jangan biarkan HP rusak mengganggu aktivitas Anda. Hubungi Jarvis.id sekarang — gratis konsultasi!
+                </p>
+            </div>
+            <div class="reveal delay-1 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20order%20service%20HP" target="_blank"
+                   class="inline-flex items-center gap-3 bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold text-lg px-8 py-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#25d366]/30 hover:shadow-xl hover:shadow-[#25d366]/40">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat WhatsApp
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20request%20jemput%20HP" target="_blank"
+                   class="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium border border-white/20 hover:border-white/40 px-8 py-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm">
+                    <i data-lucide="truck" class="w-5 h-5"></i>
+                    Request Jemput
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="bg-slate-950 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-blue-400 flex items-center justify-center">
+                            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-heading font-bold text-xl">Jarvis<span class="gradient-text">.id</span></span>
+                    </div>
+                    <p class="text-white/50 text-sm leading-relaxed mb-5">Service HP profesional online. Jemput, service, antar — tanpa ribet.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-accent/20 flex items-center justify-center transition-colors" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4 text-white/60"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-accent/20 flex items-center justify-center transition-colors" aria-label="TikTok">
+                            <i data-lucide="music-2" class="w-4 h-4 text-white/60"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-accent/20 flex items-center justify-center transition-colors" aria-label="YouTube">
+                            <i data-lucide="youtube" class="w-4 h-4 text-white/60"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-accent/20 flex items-center justify-center transition-colors" aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-4 h-4 text-white/60"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Layanan -->
+                <div>
+                    <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-white/80 mb-4">Layanan</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#layanan" class="text-white/45 hover:text-white/80 text-sm transition-colors">Ganti LCD</a></li>
+                        <li><a href="#layanan" class="text-white/45 hover:text-white/80 text-sm transition-colors">Oprek HP OJOL</a></li>
+                        <li><a href="#layanan" class="text-white/45 hover:text-white/80 text-sm transition-colors">Flash & Root</a></li>
+                        <li><a href="#layanan" class="text-white/45 hover:text-white/80 text-sm transition-colors">Unlock & Bypass</a></li>
+                        <li><a href="#layanan" class="text-white/45 hover:text-white/80 text-sm transition-colors">Modif Hardware</a></li>
+                    </ul>
+                </div>
+                <!-- Perusahaan -->
+                <div>
+                    <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-white/80 mb-4">Perusahaan</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-white/45 hover:text-white/80 text-sm transition-colors">Tentang Kami</a></li>
+                        <li><a href="#cara-kerja" class="text-white/45 hover:text-white/80 text-sm transition-colors">Cara Kerja</a></li>
+                        <li><a href="#testimoni" class="text-white/45 hover:text-white/80 text-sm transition-colors">Testimoni</a></li>
+                        <li><a href="#harga" class="text-white/45 hover:text-white/80 text-sm transition-colors">Harga</a></li>
+                        <li><a href="#" class="text-white/45 hover:text-white/80 text-sm transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Kontak -->
+                <div>
+                    <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-white/80 mb-4">Kontak</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-accent-light mt-0.5 shrink-0"></i>
+                            <span class="text-white/45 text-sm">Jakarta, Indonesia<br>(Layanan jemput area Jabodetabek)</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="phone" class="w-4 h-4 text-accent-light shrink-0"></i>
+                            <a href="tel:+6281234567890" class="text-white/45 hover:text-white/80 text-sm transition-colors">0812-3456-7890</a>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="mail" class="w-4 h-4 text-accent-light shrink-0"></i>
+                            <a href="mailto:halo@jarvis.id" class="text-white/45 hover:text-white/80 text-sm transition-colors">halo@jarvis.id</a>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="clock" class="w-4 h-4 text-accent-light shrink-0"></i>
+                            <span class="text-white/45 text-sm">Senin – Minggu, 08:00 – 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom -->
+            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-white/30 text-sm">&copy; 2025 Jarvis.id. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-white/30 hover:text-white/60 text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-white/30 hover:text-white/60 text-sm transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════ FLOATING WHATSAPP ══════════ -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Jarvis.id%2C%20saya%20mau%20tanya%20service%20HP" target="_blank" class="wa-float" aria-label="Chat WhatsApp">
+        <svg class="w-7 h-7 relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ══════════ SCRIPTS ══════════ -->
+    <script>
+        // ── Init Lucide Icons ──
+        lucide.createIcons();
+
+        // ── Loading Screen ──
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2000);
+        });
+
+        // ── Navbar Scroll Effect ──
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navLogoText = document.getElementById('nav-logo-text');
+        const navLogoDot = document.getElementById('nav-logo-dot');
+        const navCta = document.getElementById('nav-cta');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function updateNavbar() {
+            const scrolled = window.scrollY > 80;
+            if (scrolled) {
+                navbar.classList.add('nav-scrolled');
+                navLinks.forEach(l => { l.classList.remove('text-white/80'); l.classList.add('text-ink-secondary'); });
+                navLogoText.classList.remove('text-white'); navLogoText.classList.add('text-ink');
+                navLogoDot.classList.remove('gradient-text'); navLogoDot.classList.add('gradient-text'); // keep gradient
+                if(menuIcon) { menuIcon.classList.remove('text-white'); menuIcon.classList.add('text-ink'); }
+                if(navCta) { navCta.classList.remove('!bg-white/10', '!text-white', '!border', '!border-white/20'); }
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navLinks.forEach(l => { l.classList.add('text-white/80'); l.classList.remove('text-ink-secondary'); });
+                navLogoText.classList.add('text-white'); navLogoText.classList.remove('text-ink');
+                if(menuIcon) { menuIcon.classList.add('text-white'); menuIcon.classList.remove('text-ink'); }
+            }
+        }
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+        updateNavbar();
+
+        // ── Mobile Menu ──
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open', menuOpen);
+            document.body.style.overflow = menuOpen ? 'hidden' : '';
+            // Change icon
+            const icon = menuToggle.querySelector('i');
+            if (menuOpen) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+                const icon = menuToggle.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // ── Scroll Reveal (Intersection Observer) ──
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ── Hero Particles ──
+        const particleContainer = document.getElementById('particles');
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 3 + 1;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.bottom = '-10px';
+            particle.style.animationDuration = (Math.random() * 12 + 8) + 's';
+            particle.style.animationDelay = (Math.random() * 5) + 's';
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            particleContainer.appendChild(particle);
+
+            // Remove after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 20000);
+        }
+        // Create initial particles
+        for (let i = 0; i < 25; i++) {
+            setTimeout(createParticle, i * 200);
+        }
+        // Continuously create particles
+        setInterval(createParticle, 800);
+
+        // ── Smooth Scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
